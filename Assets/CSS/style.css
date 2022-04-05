@@ -1,4 +1,98 @@
+* {
+    background-color:#338CE8 ;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+
 .hide {
     display: none;
 }
 
+aside {
+float: right;
+font-weight: bold;
+font-size: 25px;
+}
+
+.scores {
+    display: inline-block;
+    
+}
+
+.scores:hover {
+    font-size: 20px;
+}
+
+
+h1, .complete {
+    text-align: center;
+    font-size: 60px;
+}
+
+#q-title {
+    text-align: center;
+}
+
+#choices {
+    text-align: center;
+    margin-left: 410px;
+}
+
+p {
+    text-align: center;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-bottom: 20px;
+    font-family: sans-serif;
+    font-weight: 320;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+#start {
+    margin-left: 650px;
+    border-radius: 30px;
+    border-color: blueviolet;
+    color: blueviolet;
+    background-color: white;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+button {
+    border-radius: 30px;
+    border-color: blueviolet;
+    color: blueviolet;
+    background-color: white;
+    padding: 10px 20px;
+    display: flex;
+    margin: 5px;
+}
+
+#initials {
+    background-color: white;
+    color: black;
+    border: 10px;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+#submit {
+    margin-left: 420px;
+    margin-top: 30px;
+    border-radius: 30px;
+    border-color: blueviolet;
+    color: blueviolet;
+    background-color: white;
+}
+
+#delete-scores {
+    margin-left: 620px;
+    margin-top: 20px;
+}
+
+#go-back {
+    margin-left: 642px;
+    margin-top: 30px;
+}

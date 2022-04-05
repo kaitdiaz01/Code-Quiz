@@ -17,7 +17,7 @@ var questions = [
     answer: "all of the above"
     },
     {
-    title: "Arrays in Javascript can be used Inside which HTML element do we put the JavaScript?",
+    title: "Inside which HTML element do we put the JavaScript?",
     choices: ["<scripting>", "<javascript>", "<script>", "<js>"],
     answer: "<script>"
     },
@@ -50,86 +50,106 @@ function startQuiz () {
     questionsEl.removeAttribute("class");
 
     //start timer
-    var setTime = setInterval(function () {
+    timerId = setInterval(function () {
         time--;
         timerEl.textContent = time;
-
-        if (time === 0) {
-            clearInterval (setTime);
+        if (time <= 0) {
+            clearInterval (timerId);
             timerEl.textContent = "Game Over";
-            startQuiz();
+            endTheQuiz();
+
         }
     },1000);
-    getQuestions();
+    getQuestion();
     
 }
 
 function getQuestion() {
     //variable to store current question
-    var currentQuestions = questions[questionsIndex];
+    var currentQuestion = questions[questionsIndex].title;
     //update the question title with current code
     var questionTitle = document.getElementById("q-title");
-    questionTitle = currentQuestions;
-    //clear out old question choices
-
+    questionTitle.textContent = currentQuestion;
+    
     //loop over choices using forEach
+    questions[questionsIndex].choices.forEach(function(answer) {
+        var button = document.createElement('button');
+        button.textContent = answer;
+        choicesEl.appendChild(button);
+        button.setAttribute("value", answer);
+        button.addEventListener("click",function(event) {
+            event.preventDefault();
+            if (event.target.value === questions[questionsIndex].answer) {
+                questionsIndex++;
+                questionTitle.textContent = "";
+                choicesEl.innerHTML = "";
+                //check if we've finished asking all the questions
+                if (questions.length <= questionsIndex) {
+                    endTheQuiz();
+                }
+                else {
+                    getQuestion();
+                };
+            }
+            else {
+                time = time-10;
+                timerEl.textContent = time;
+                if (time <= 0) {
+                    endTheQuiz();
+                }
+            }
+        });  
+    });
 
-    //attach clcik event to listener
-
-    //display the choice on the page
-
-    
 }
 
-function clickQuestion() {
-    //error handling needed for incorrect answer to question
-
-    //add time deduction
-
-    //display the new time once time deducted
-
-    //flash the wrong/right feedback on the page under the questions
-
-    //move to next question
-
-    //check if we've finished asking all the questions
-    
-}
 
 function endTheQuiz() {
     //stop timer
-
-    //show the final screen
-
-    //show final score
-
+    clearInterval(timerId);
     //hide questions
+    questionsEl.setAttribute("class","hide");
+    var finalScreen = document.getElementById("final-screen");
+     //show the final screen
+    finalScreen.removeAttribute("class");
+    //show final score
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+
 }
 
-
-function clockCountDown() {
-    //update the time
-    time--;
-    timerEl.textContent = time;
-    //check if user is out of time
-    if (time <= 0) {
-        endTheQuiz();
-    }
-}
-
-function saveHighScores() {
+function saveHighScores(event) {
+    event.preventDefault();
     //get value from your input box
+     var input = {
+        initials: initalsEl.value.trim(),
+        score: time
+     }
 
     //make sure user wrote their initials in the box
+     if (input.initials === "") {
+         alert("Please type intials");
+         return;  
 
-    //local storage
+     }
 
+     //local storage
+    else {
+       var scores = JSON.parse(localStorage.getItem("input"));
+       if (scores !== null) {
+           storeScores = scores
+       }
+       localStorage.setItem("input", JSON.stringify(input));
+     };
+   
+     window.location.href = "./highscore.html";
     //redirect to next page (highscore.html)
-}
+};
 
 // key event functions
 function enterBtnEvent() {
     //give enter key ability to save your highscore when keydown
+    
 }
 
 //user clicks to begin quiz
