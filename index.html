@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./Assets/CSS/style.css" >
 </head>
 <body>
-    <div class=""scores"><a href="./highscore.html">View Highscores</a></div>
+    <div class="scores"><a href="./highscore.html">View Highscores</a></div>
     
     <aside class="timer">Time: <span id="time">0</span></aside>
 
@@ -16,8 +16,21 @@
             <div id="begin" class="start">
                 <h1>Code Quiz!!</h1>
                 <p>Take this quiz to test your knowledge on everything you've learned in the UCF Coding Bootcamp so far!! Remember, get anything wrong and the quiz will penalize your time by 10 seconds. Good luck!!</p>
-                <button id="start"
+                <button id="start">Begin</button>
             </div>
+
+        <section id="questions" class="hide">
+            <h2 id="q-title"></h2>
+            <div id="choices" class="choices"></div>
+        </section>
+
+        <section id="final-screen" class="hide">
+            <h2>Completed!</h2>
+            <p>Your final score is: <span id="final-score"></span></p>
+
+            <p>Enter Your Initials: <input type="text" id="initials" max="4"/>
+            <button id="submit">Submit Score</button></p>
+        </section>
     </section>
 
     <script src="./Assets/JS/logic.js"></script>
