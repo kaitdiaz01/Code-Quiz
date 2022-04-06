@@ -121,13 +121,13 @@ function endTheQuiz() {
 function saveHighScores(event) {
     event.preventDefault();
     //get value from your input box
-     var input = {
+     var userInput = {
         initials: initalsEl.value.trim(),
         score: time
      }
 
     //make sure user wrote their initials in the box
-     if (input.initials === "") {
+     if (userInput.initials === "") {
          alert("Please type intials");
          return;  
 
@@ -135,20 +135,22 @@ function saveHighScores(event) {
 
      //local storage
     else {
-       var scores = JSON.parse(localStorage.getItem("input"));
+       var scores = JSON.parse(localStorage.getItem("userInput"));
        if (scores !== null) {
            storeScores = scores
        }
-       localStorage.setItem("input", JSON.stringify(input));
+       localStorage.setItem("userInput", JSON.stringify(userInput));
      };
    
      window.location.href = "./highscore.html";
     //redirect to next page (highscore.html)
 };
 
+
 // key event functions
 function enterBtnEvent() {
     //give enter key ability to save your highscore when keydown
+
     
 }
 
