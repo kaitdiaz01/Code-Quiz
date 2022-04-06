@@ -10,7 +10,7 @@ Code Quiz : Homework
 
 
 
-![alt text](./assets/Images/screencapture-kaitdiaz01-github-io-Code-Quiz-2022-04-05-21_29_18.png)
+![Screenshot](./Assets/Images/screencapture-kaitdiaz01-github-io-Code-Quiz-2022-04-05-21_29_18.png)
 
 
 
